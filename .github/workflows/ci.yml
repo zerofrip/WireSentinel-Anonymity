@@ -13,17 +13,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          path: WireSentinel-Anonymity
 
       - name: Checkout WireSentinel (shared-types)
         uses: actions/checkout@v4
         with:
-          repository: WireSentinel/WireSentinel
+          repository: zerofrip/WireSentinel
           path: WireSentinel
 
       - name: Checkout WireSentinel-Mixnet
         uses: actions/checkout@v4
         with:
-          repository: WireSentinel/WireSentinel-Mixnet
+          repository: zerofrip/WireSentinel-Mixnet
           path: WireSentinel-Mixnet
 
       - uses: dtolnay/rust-toolchain@stable
