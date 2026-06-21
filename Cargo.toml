@@ -1,0 +1,48 @@
+[workspace]
+resolver = "2"
+members = [
+    "anonymity-core",
+    "katzenpost",
+    "loopix",
+    "federation",
+    "cover-traffic",
+    "entropy",
+    "decoy-routing",
+    "discovery",
+    "analytics",
+    "sdk",
+    "controller",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "Apache-2.0"
+authors = ["WireSentinel Contributors"]
+repository = "https://github.com/WireSentinel/WireSentinel-Anonymity"
+
+[workspace.dependencies]
+tokio = { version = "1", features = ["full"] }
+async-trait = "0.1"
+uuid = { version = "1", features = ["v4", "serde"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tracing = "0.1"
+parking_lot = "0.12"
+chrono = { version = "0.4", features = ["serde"] }
+anyhow = "1"
+
+shared-types = { path = "../WireSentinel/shared-types" }
+mixnet-core = { path = "../WireSentinel-Mixnet/mixnet-core" }
+mixnet-transports = { path = "../WireSentinel-Mixnet/transports", package = "transports" }
+anonymity-core = { path = "anonymity-core" }
+katzenpost = { path = "katzenpost" }
+loopix = { path = "loopix" }
+federation = { path = "federation" }
+cover-traffic = { path = "cover-traffic" }
+entropy = { path = "entropy" }
+decoy-routing = { path = "decoy-routing" }
+discovery = { path = "discovery" }
+analytics = { path = "analytics" }
+sdk = { path = "sdk" }
+controller = { path = "controller" }
