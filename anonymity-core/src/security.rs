@@ -31,8 +31,7 @@ impl Default for AnonymitySecurityPolicy {
 
 impl AnonymitySecurityPolicy {
     pub fn provider_allowed(&self, provider: &AnonymityProvider) -> bool {
-        self.allowed_providers.is_empty()
-            || self.allowed_providers.iter().any(|p| p == provider)
+        self.allowed_providers.is_empty() || self.allowed_providers.iter().any(|p| p == provider)
     }
 
     pub fn privacy_score_allowed(&self, score: f64) -> bool {

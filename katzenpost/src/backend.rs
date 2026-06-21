@@ -73,15 +73,19 @@ impl KatzenpostBackend {
     }
 
     fn build_route(&self, port: Option<u16>) -> KatzenpostRoute {
-        let gateway = self.selected_gateway.read().clone().unwrap_or_else(|| KatzenpostGateway {
-            id: "katzenpost-stub".into(),
-            address: "127.0.0.1:0".into(),
-            identity_key: "stub".into(),
-            country: None,
-            latency_ms: Some(42),
-            healthy: true,
-            last_seen: Some(Utc::now()),
-        });
+        let gateway = self
+            .selected_gateway
+            .read()
+            .clone()
+            .unwrap_or_else(|| KatzenpostGateway {
+                id: "katzenpost-stub".into(),
+                address: "127.0.0.1:0".into(),
+                identity_key: "stub".into(),
+                country: None,
+                latency_ms: Some(42),
+                healthy: true,
+                last_seen: Some(Utc::now()),
+            });
         KatzenpostRoute {
             id: Uuid::new_v4(),
             profile_id: self.profile.id,
@@ -178,7 +182,11 @@ impl AnonymityBackend for KatzenpostBackend {
     }
 
     fn privacy_score(&self) -> f64 {
-        if *self.stub_mode.read() { 0.4 } else { 0.78 }
+        if *self.stub_mode.read() {
+            0.4
+        } else {
+            0.78
+        }
     }
 }
 

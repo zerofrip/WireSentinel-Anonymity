@@ -2,6 +2,4 @@
 
 mod dto;
 
-pub use dto::{
-    AnonymityHeartbeatPayload, AnonymityNodeDto, AnonymityRouteDto, FederatedRouteDto,
-};
+pub use dto::{AnonymityHeartbeatPayload, AnonymityNodeDto, AnonymityRouteDto, FederatedRouteDto};

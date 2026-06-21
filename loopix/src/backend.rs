@@ -73,15 +73,19 @@ impl LoopixBackend {
     }
 
     fn build_route(&self, port: Option<u16>) -> LoopixRoute {
-        let provider = self.selected_provider.read().clone().unwrap_or_else(|| LoopixProvider {
-            id: "loopix-stub".into(),
-            address: "127.0.0.1:0".into(),
-            public_key: "stub".into(),
-            layer: 1,
-            latency_ms: Some(38),
-            healthy: true,
-            last_seen: Some(Utc::now()),
-        });
+        let provider = self
+            .selected_provider
+            .read()
+            .clone()
+            .unwrap_or_else(|| LoopixProvider {
+                id: "loopix-stub".into(),
+                address: "127.0.0.1:0".into(),
+                public_key: "stub".into(),
+                layer: 1,
+                latency_ms: Some(38),
+                healthy: true,
+                last_seen: Some(Utc::now()),
+            });
         LoopixRoute {
             id: Uuid::new_v4(),
             profile_id: self.profile.id,
@@ -182,7 +186,11 @@ impl AnonymityBackend for LoopixBackend {
     }
 
     fn privacy_score(&self) -> f64 {
-        if *self.stub_mode.read() { 0.42 } else { 0.8 }
+        if *self.stub_mode.read() {
+            0.42
+        } else {
+            0.8
+        }
     }
 }
 

@@ -30,7 +30,11 @@ impl DecoyRoutingFramework {
     }
 
     /// Build a simulated route with decoy hops injected in-memory.
-    pub fn simulate_route(&mut self, real_hops: &[&str], decoy_count: u32) -> DecoySimulationResult {
+    pub fn simulate_route(
+        &mut self,
+        real_hops: &[&str],
+        decoy_count: u32,
+    ) -> DecoySimulationResult {
         let mut hops: Vec<DecoyHop> = real_hops
             .iter()
             .map(|label| DecoyHop {

@@ -35,11 +35,8 @@ pub fn federation_diversity(profiles: &[AnonymityProfile]) -> f64 {
 pub fn anonymity_set_estimate(paths: &[AnonymityRoute], profiles: &[AnonymityProfile]) -> f64 {
     let path_div = path_diversity(paths);
     let fed_div = federation_diversity(profiles);
-    let hop_bonus = paths
-        .iter()
-        .map(|p| p.hop_count as f64)
-        .sum::<f64>()
-        / paths.len().max(1) as f64;
+    let hop_bonus =
+        paths.iter().map(|p| p.hop_count as f64).sum::<f64>() / paths.len().max(1) as f64;
     let base = (path_div * 0.4 + fed_div * 0.4).min(1.0);
     (base * hop_bonus.ln_1p()).max(1.0)
 }

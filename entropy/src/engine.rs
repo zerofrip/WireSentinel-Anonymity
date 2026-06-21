@@ -58,7 +58,7 @@ impl RouteEntropyEngine {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use anonymity_core::{AnonymityProvider};
+    use anonymity_core::AnonymityProvider;
     use uuid::Uuid;
 
     fn sample_route(hops: Vec<&str>) -> AnonymityRoute {
@@ -89,10 +89,7 @@ mod tests {
     #[test]
     fn optimize_returns_best_path() {
         let engine = RouteEntropyEngine::new();
-        let paths = vec![
-            sample_route(vec!["x"]),
-            sample_route(vec!["x", "y", "z"]),
-        ];
+        let paths = vec![sample_route(vec!["x"]), sample_route(vec!["x", "y", "z"])];
         let best = engine.optimize(&paths).expect("best");
         assert_eq!(best.hop_count, 3);
     }

@@ -75,14 +75,12 @@ impl MixnetFederationManager {
             return None;
         }
 
-        let best = providers
-            .iter()
-            .max_by(|a, b| {
-                a.backend
-                    .privacy_score()
-                    .partial_cmp(&b.backend.privacy_score())
-                    .unwrap_or(std::cmp::Ordering::Equal)
-            })?;
+        let best = providers.iter().max_by(|a, b| {
+            a.backend
+                .privacy_score()
+                .partial_cmp(&b.backend.privacy_score())
+                .unwrap_or(std::cmp::Ordering::Equal)
+        })?;
 
         let mut route = best.backend.route_info();
         if providers.len() > 1 {
@@ -107,7 +105,8 @@ impl MixnetFederationManager {
         let unique_hops: std::collections::HashSet<_> = route.hops.iter().cloned().collect();
         let valid = route.hop_count >= 2
             && !route.hops.is_empty()
-            && (route.provider == AnonymityProvider::Federated || unique_hops.len() == route.hops.len());
+            && (route.provider == AnonymityProvider::Federated
+                || unique_hops.len() == route.hops.len());
 
         FederationValidation {
             valid,
