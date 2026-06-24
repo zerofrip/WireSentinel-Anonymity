@@ -33,3 +33,7 @@ cargo test --workspace
 
 - **Decoy routing** operates in-memory only (`Research`, `Simulation`, `Lab` modes). No real network traffic is emitted.
 - Katzenpost and Loopix backends use local SOCKS stubs for CI/development, matching the Nym stub pattern.
+
+## License
+
+Apache-2.0. See [LICENSE](LICENSE).
